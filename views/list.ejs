@@ -1,0 +1,33 @@
+<%- include('header'); -%>
+
+
+    <div class="box" id="heading">
+        <!-- log date string inside h1 -->
+        <h1>
+            <%= listTitle %>
+        </h1>
+    </div>
+
+    <div class="box">
+        <!-- loop over array and for how many items are in there we create
+            a list item for each of them -->
+        <% for (let i=0; i < newArrayListItems.length; i++) { %>
+            <!-- we render a new paragraph for the value of "newArrayListItems" at index i -->
+            <div class="item">
+                <input type="checkbox">
+                <p>
+                    <%= newArrayListItems[i] %>
+
+                </p>
+            </div>
+            <% } %>
+
+                <form class="item" action="/" method="post">
+                    <!-- when a user adds new item we save that into "newItem aand we trigger post req to "/"(home route) which will get to app.post -->
+                    <input type="text" name="newItem" placeholder="New Task" autocomplete="off">
+                    <button type="submit" name="list" value=<%=listTitle %>>+</button>
+                </form>
+    </div>
+
+
+    <%- include('footer'); -%>
