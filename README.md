@@ -7,3 +7,6 @@ This project is made for practicing ejs templating and to make dynamic html page
 
 
 Inside the app.js we set the view engine for ejs, we give acces to the .css that's inside the /public folder using express.static method. We get the date from the module date.js and we render the page list.ejs and we post the data that's beeing displayed item by item(task by task). We can create as many pages we like and we can integrate them into our app using app.get to that specific route(it's not hard to add new pages because I templated the header and the footer file and for new pages we need only to require them and to add the text desired).
+
+
+The update of this project comes with the integration of a database which is MongoDB. I used MongoDB with mongoose to connect to the database where I have a collection named todolistDB that gets created automatically when you run the project. Lodash was used to generalize the url that the user typed so it can handle lower and capital letter for a single page(e.g: home to be the same as HOme when you search for that). In order to make new to do pages you need to modify the url to what you want to do (e.g: "/shopping", "/learning").
