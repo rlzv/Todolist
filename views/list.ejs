@@ -11,17 +11,25 @@
     <div class="box">
         <!-- loop over array and for how many items are in there we create
             a list item for each of them -->
-        <% for (let i=0; i < newArrayListItems.length; i++) { %>
-            <!-- we render a new paragraph for the value of "newArrayListItems" at index i -->
-            <div class="item">
-                <input type="checkbox">
-                <p>
-                    <%= newArrayListItems[i] %>
+        <% newArrayListItems.forEach((item)=> { %>
 
-                </p>
-            </div>
-            <% } %>
+            <!-- the form is responsible for deleting items -->
+            <form action="/delete" method="post">
+                <div class="item">
+                    <!-- this.form.submit() take the form and submit to make post req to our delete route -->
+                    <!-- and bind the id to the value of each of checkboxes to submit and find which item was checked -->
+                    <input type="checkbox" name="checked" value="<%=item._id %>" onChange="this.form.submit()">
+                    <p>
+                        <%= item.name %>
 
+                    </p>
+                </div>
+                <input type="hidden" name="delListName" value="<%= listTitle %>">
+
+            </form>
+            <% }); %>
+
+                <!-- the form is responsible for adding new items -->
                 <form class="item" action="/" method="post">
                     <!-- when a user adds new item we save that into "newItem aand we trigger post req to "/"(home route) which will get to app.post -->
                     <input type="text" name="newItem" placeholder="New Task" autocomplete="off">
